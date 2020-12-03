@@ -1,0 +1,22 @@
+.key {
+    text-align: center;
+    border: 1px solid salmon;
+    padding: 10px;
+    display: inline-block;
+    transition: all 0.07s;
+}
+.playing {
+    transform: scale(1.1);
+    border-color: goldenrod;
+    box-shadow: 0px 0px 10px whitesmoke;
+}
+
+kbd {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    color: chocolate;
+}
+body {
+    background-color: tomato;
+}

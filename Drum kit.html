@@ -6,6 +6,36 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+        <div class="keys">
+            <div data-key="65" class="key">
+                <kbd>A</kbd>
+                <span class="sound">Clap</span>
+            </div>
+            <div data-key="66" class="key">
+                <kbd>b</kbd>
+                <span class="sound">Wave</span>
+            </div>
+        </div>
+        <audio data-key="65" src="sounds/clap.wav"></audio>
+        <audio data-key="66" src="sounds/waves.wav"></audio>
+
     </body>
+    <script>
+        window.addEventListener('keydown', function(event) {
+            var sound = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+            if(!sound) return; // returns if no audio div is assigned for key
+            var element = document.querySelector(`.key[data-key="${event.keyCode}"]`);
+            console.log(element);
+            sound.currentTime = 0;
+            sound.play();
+            element.classList.add("playing");
+        })
+        function stopPlaying(e){
+            if(e.propertyName !== "transform") return ;
+            this.classList.remove("playing");
+        }
+        var keys = document.querySelectorAll('.key');
+        keys.forEach(key =>(key.addEventListener('transitionend', stopPlaying)));
+    </script>
     
 </html>
