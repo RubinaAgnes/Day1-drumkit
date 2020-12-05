@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<body>
+    <div class="controls">
+        <h1>It's Christmas Season</h1>
+    <label for="blur">BLUR</label>
+    <input type="range" min="0" max="20" value="10" name="blur" data-sizing="px">
+    <label for="spacing">SPACING</label>
+    <input name="spacing" type="range" min="0" max="25" value="10" data-sizing="px">
+    <label for="color">Color</label>
+    <input type="color" value="#000000" name="color">
+    <img src="https://images.unsplash.com/photo-1606916929361-b29d5d4a4ad7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw=&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"/>
+    </div>
+    
+</body>
+<style>
+    :root {
+        --blur: 0px;
+        --spacing: 10px;
+        --color: yellow;
+    }
+    img {
+        filter : blur(var(--blur));
+        padding: var(--spacing);
+        background: var(--color);
+    }
+</style>
+<script>
+    var inputs = document.querySelectorAll('.controls input');
+   function handleChange(){
+       console.log(this.name, this.value);
+        var suffix = this.dataset.sizing || '';
+        document.documentElement.style.setProperty(`--${this.name}`,this.value+suffix);
+    }
+    inputs.forEach(input => input.addEventListener('change', handleChange));
+    inputs.forEach(input => input.addEventListener('mousemove', handleChange));
+
+  
+</script>
