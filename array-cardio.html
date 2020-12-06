@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<script>
+    const people = [
+        {name : 'bina' , year : 1996},
+        {name : 'berk' , year : 1956},
+        {name : 'rani' , year : 1963},
+        {name : 'tina', year : 1991}
+    ];
+    const comments = [
+        { text : 'holy holy' , id : 12345},
+        { text : 'is the lord' , id : 23456},
+        { text : 'almighty is his name', id: 34567}
+    ];
+    var seniors = people.some(person =>  (new Date().getFullYear() - person.year < 20));
+    console.log(seniors);
+    var teenagers = people.every( person => new Date().getFullYear()- person.year > 20);
+    console.log(teenagers);
+
+    var isCommentPresent = comments.find(comment => comment.id === 12345);
+    console.log(isCommentPresent);
+    var index = comments.findIndex(comment => comment.id === 23456);
+    console.log(index);
+</script>
