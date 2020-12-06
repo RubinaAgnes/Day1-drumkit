@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<body>
+    <input class="search" type="text" name="search" value="Enter value">
+    <div class="suggestions"></div>
+</body>
+<script>
+    var cities=[];
+fetch('https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json')
+.then( data => data.json())
+.then (data => cities.push(...data));
+console.log(cities);
+var searchbar = document.querySelector('.search');
+var suggestions = document.querySelector('.suggestions');
+function handleChange() {
+    console.log(this.value);
+    var matchedData = cities.filter(city =>{
+        var regex = new RegExp(this.value, 'gi');
+        return city.state.match(regex) || city.city.match(regex);
+    });
+    var filteredHTML = matchedData.map( data =>{
+        return `
+        <span>${data.city}</span>,
+        <span>${data.state}</span>
+        <br/>
+        `;
+    }).join('');
+    suggestions.innerHTML = filteredHTML;
+
+}
+
+searchbar.addEventListener('change', handleChange);
+
+</script>
