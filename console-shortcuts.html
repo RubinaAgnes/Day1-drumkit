@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<body>
+    <p class="select" onclick="callFn()">this is a para</p>
+</body>
+<script>
+    function callFn() {
+        // break on-->attribute modifications
+        var para = document.querySelector('.select');
+ para.style.fontSize = '10px';
+    }
+    var para = document.querySelector('.select');
+    const comments = [
+        { text : 'holy holy' , id : 12345},
+        { text : 'is the lord' , id : 23456},
+        { text : 'almighty is his name', id: 34567}
+    ];
+    // regular
+    console.log('edccc');
+    // interpolated
+    console.log('this is %s string', 'eee');
+    //
+    console.error("error");
+    console.warn("warning");
+    console.info("information");
+    console.log("%c style this", 'font-size:200px;color:yellow;');
+    console.assert( 1 === "1", 'val comparison');
+    console.clear();
+    console.log(para);
+    console.dir(para);
+    comments.map( comment => {
+        console.groupCollapsed(comment.id);
+        console.log(comment.text);
+        console.log(comment.id);
+        console.groupEnd(comment.id);
+    })
+    console.count("wsx");
+    console.count("wsx");
+    console.count("wsx");
+    console.count("wsx");
+    console.time("getting data");
+    fetch("https://api.github.com/users/wesbos")
+    .then (data => data.json())
+    .then (data => {
+        console.log(data);
+        console.timeEnd("getting data");
+    })
+</script>
