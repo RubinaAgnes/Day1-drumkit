@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<body>
+    <div class="inputs">
+        <input class="input" type="checkbox">
+        <span>Fist checkbox</span><br/>
+        <input class="input" type="checkbox">
+        <span>2 checkbox</span><br/>
+        <input class="input" type="checkbox">
+        <span>3 checkbox</span><br/>
+        <input class="input" type="checkbox">
+        <span>4 checkbox</span><br/>
+        <input class="input" type="checkbox">
+        <span>5 checkbox</span><br/>
+        <input class="input" type="checkbox">
+        <span>6 checkbox</span><br/>
+        <input class="input" type="checkbox">
+        <span>7 checkbox</span><br/>
+        <input class="input" type="checkbox">
+        <span>8 checkbox</span>
+    </div>
+</body>
+<script>
+    var inputs = document.querySelectorAll("input[type='checkbox']");
+    var inBetween = false;
+    var lastChecked;
+    function handleChange(e) {
+        console.log(e,this.checked);
+        if (e.shiftKey && this.checked) {
+            inputs.forEach(input =>{
+                if(input === lastChecked || input === this) {
+                    inBetween = !inBetween;
+                }
+                if (inBetween) {
+                    input.checked = true;
+                }
+            });
+        }
+        lastChecked = this;
+    }
+    inputs.forEach(input =>{
+        input.addEventListener("click", handleChange);
+    })
+</script>
