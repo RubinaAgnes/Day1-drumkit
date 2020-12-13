@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<body>
+   <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+    <script>
+        var keys = [];
+        var value = "bina";
+        window.addEventListener("keyup", handleChange);
+        function handleChange(e) {
+            console.log(e.key);
+            keys.push(e.key);
+            keys.splice(-keys.length, keys.length-value.length);
+            console.log(keys);
+            if(keys.join("").includes(value)) {
+                console.log("yay!!!!")
+                cornify_add();
+            }
+        }
+    </script>
+</body>
